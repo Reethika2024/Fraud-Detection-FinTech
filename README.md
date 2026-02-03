@@ -2,6 +2,12 @@
 
 An end-to-end machine learning project to detect fraudulent credit card transactions using XGBoost classifier with 99%+ accuracy.
 
+# 💳 Credit Card Fraud Detection using XGBoost
+
+![CI Pipeline](https://github.com/Reethika2024/Fraud-Detection-FinTech/actions/workflows/ci.yml/badge.svg)
+
+An end-to-end machine learning project...
+
 ## 📊 Dataset
 
 - **Source:** [Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
