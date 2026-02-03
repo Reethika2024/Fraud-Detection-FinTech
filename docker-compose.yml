@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  fraud-detection:
+    build: .
+    image: fraud-detection:latest
+    container_name: fraud_detection_app
+    volumes:
+      - ./models:/app/models
+      - ./plots:/app/plots
+      - ./creditcard.csv:/app/creditcard.csv
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python main.py --mode train

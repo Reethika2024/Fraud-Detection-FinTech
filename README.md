@@ -74,6 +74,29 @@ Fraud-Detection-FinTech/
 - **Model Training:** XGBoost with optimized hyperparameters
 - **Comprehensive Evaluation:** Confusion matrix, ROC curve, classification report
 
+## 🐳 Docker Deployment
+
+### Build and run with Docker:
+```bash
+# Build the Docker image
+docker build -t fraud-detection .
+
+# Run the container
+docker run -v $(pwd)/models:/app/models -v $(pwd)/plots:/app/plots fraud-detection
+```
+
+### Or use Docker Compose:
+```bash
+# Build and run
+docker-compose up
+
+# Run in detached mode
+docker-compose up -d
+
+# Stop the container
+docker-compose down
+```
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
