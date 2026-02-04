@@ -1,118 +1,60 @@
-# Contributing to Credit Card Fraud Detection
+# Contributing
 
-Thank you for your interest in contributing to this project! This document provides guidelines for contributing.
+Thanks for checking out this project! If you want to contribute, here's how.
 
-## 🚀 Getting Started
+## Setup
 
-### Prerequisites
-- Python 3.8 or higher
-- Git installed on your machine
-- Basic knowledge of machine learning and fraud detection
-
-### Setup Development Environment
-
-1. **Fork and clone the repository:**
+1. Fork and clone:
 ```bash
-   git clone https://github.com/Reethika2024/Fraud-Detection-FinTech.git
-   cd Fraud-Detection-FinTech
+git clone https://github.com/Reethika2024/Fraud-Detection-FinTech.git
+cd Fraud-Detection-FinTech
 ```
 
-2. **Install dependencies:**
+2. Install dependencies:
 ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-3. **Download the dataset:**
-   - Get it from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-   - Place `creditcard.csv` in the project root
+3. Get the dataset from Kaggle and put `creditcard.csv` in the project folder
 
-## 📝 How to Contribute
+## Making Changes
 
-### Reporting Bugs
-- Use GitHub Issues
-- Describe the bug clearly
-- Include steps to reproduce
-- Mention your Python version and OS
-
-### Suggesting Enhancements
-- Open an issue with your suggestion
-- Explain why this enhancement would be useful
-- Provide examples if possible
-
-### Code Contributions
-
-1. **Create a new branch:**
+1. Create a branch:
 ```bash
-   git checkout -b feature/your-feature-name
+git checkout -b your-feature-name
 ```
 
-2. **Make your changes:**
-   - Follow PEP 8 style guidelines
-   - Add docstrings to functions
-   - Keep functions focused and modular
+2. Make your changes
 
-3. **Test your changes:**
+3. Test that it works:
 ```bash
-   python main.py --mode train
+python main.py --mode train
 ```
 
-4. **Commit your changes:**
+4. Commit:
 ```bash
-   git add .
-   git commit -m "Add: description of your changes"
+git commit -m "brief description"
 ```
 
-5. **Push and create Pull Request:**
-```bash
-   git push origin feature/your-feature-name
-```
+5. Push and open a PR
 
-## 🏗️ Project Structure
-```
-Fraud-Detection-FinTech/
-├── config.py              # Configuration settings
-├── preprocess.py          # Data preprocessing
-├── train_model.py         # Model training
-├── evaluate.py            # Model evaluation
-├── main.py                # Main pipeline
-├── requirements.txt       # Dependencies
-└── README.md              # Documentation
-```
+## Guidelines
 
-## ✅ Commit Message Guidelines
+- Keep code readable
+- Add comments for tricky parts
+- Follow existing style
+- Test before committing
 
-Use clear, descriptive commit messages:
-- `Add: new feature or file`
-- `Fix: bug fix`
-- `Update: improvements to existing code`
-- `Refactor: code restructuring`
-- `Docs: documentation changes`
+## Ideas for Contributions
 
-## 🧪 Testing
+- Try different models (Random Forest, neural nets, etc.)
+- Add more features
+- Improve visualizations
+- Better hyperparameter tuning
+- Documentation improvements
 
-Before submitting a PR:
-- Test the preprocessing pipeline
-- Ensure model trains successfully
-- Verify evaluation metrics are generated
-- Check for any Python errors
-
-## 📊 Code Quality
-
-- Write clean, readable code
-- Add comments for complex logic
-- Use meaningful variable names
-- Follow existing code style
-
-## 🤝 Code of Conduct
-
-- Be respectful and inclusive
-- Provide constructive feedback
-- Help others learn and grow
-
-## 📧 Questions?
+## Questions?
 
 Open an issue or reach out to [@Reethika2024](https://github.com/Reethika2024)
 
----
-
-Thank you for contributing! 🎉
+Thanks!

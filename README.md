@@ -1,141 +1,131 @@
-# 💳 Credit Card Fraud Detection using XGBoost
-
-An end-to-end machine learning project to detect fraudulent credit card transactions using XGBoost classifier with 99%+ accuracy.
-
-# 💳 Credit Card Fraud Detection using XGBoost
+# Credit Card Fraud Detection using XGBoost
 
 ![CI Pipeline](https://github.com/Reethika2024/Fraud-Detection-FinTech/actions/workflows/ci.yml/badge.svg)
 
-An end-to-end machine learning project...
+A machine learning project to detect fraudulent credit card transactions. Built as part of my data science learning journey.
 
-## 📊 Dataset
+## Overview
 
-- **Source:** [Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-- **Size:** 284,807 transactions
-- **Features:** 30 (28 PCA-transformed features + Time + Amount)
-- **Target:** Class (0 = legitimate, 1 = fraudulent)
-- **Imbalance:** Only 0.17% fraudulent transactions
+This project uses XGBoost to identify fraud in credit card transactions. The main challenge here is the severe class imbalance - only 0.17% of transactions are fraudulent.
 
-## 🎯 Project Overview
+**Key Results:**
+- Accuracy: 99.9%
+- Precision: 95.8%
+- Recall: 89.7%
+- Successfully catches ~90% of fraud cases
 
-This project implements a robust fraud detection system using:
-- **Feature Engineering:** Log transformation, time-based features
-- **Handling Imbalance:** SMOTE (Synthetic Minority Over-sampling Technique)
-- **Model:** XGBoost Classifier
-- **Evaluation:** Precision, Recall, F1-Score, ROC-AUC
+## Dataset
 
-## 🛠️ Technologies Used
+Using the Kaggle Credit Card Fraud Detection dataset:
+- 284,807 total transactions
+- 492 fraudulent (0.17%)
+- 28 anonymized features (PCA transformed)
+- Time and Amount columns
 
-- Python 3.x
-- Pandas & NumPy - Data manipulation
-- Scikit-learn - Machine learning pipeline
-- XGBoost - Gradient boosting model
-- Matplotlib & Seaborn - Visualization
-- SMOTE - Handling class imbalance
+Download from: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-## 📈 Results
+## Approach
 
-**Model Performance:**
-- ✅ **Accuracy:** 99.95%
-- ✅ **Precision:** 95.82%
-- ✅ **Recall:** 89.67%
-- ✅ **F1-Score:** 92.65%
-- ✅ **ROC-AUC:** 98.91%
+### Data Processing
+Created two new features:
+- `LogAmount` - log transformation of transaction amount
+- `Hour` - extracted from Time to capture daily patterns
 
-📊 **[View Detailed Results & Analysis →](RESULTS.md)**
+### Handling Imbalance
+Used SMOTE to oversample the minority class. Without this, the model would just predict "legitimate" for everything and still get 99.8% accuracy.
 
-**Key Achievements:**
-- Successfully handles extreme class imbalance (0.17% fraud rate)
-- Low false positive rate (0.005%) minimizes customer friction
-- Catches 90% of fraudulent transactions
-- Real-time prediction capability (<10ms per transaction)
+### Model
+XGBoost classifier with these settings:
+- 100 estimators
+- Max depth of 6
+- Learning rate 0.1
 
-**Visualizations:** See `plots/` directory for confusion matrix, ROC curves, and feature importance.
+Chose XGBoost because it handles imbalanced data well and is fast to train.
 
-### 📊 Model Visualizations
+## Project Structure
+```
+.
+├── config.py                    # settings and parameters
+├── preprocess.py               # data preprocessing
+├── train_model.py              # model training
+├── evaluate.py                 # metrics and evaluation
+├── visualize.py                # data visualizations
+├── main.py                     # run everything
+├── test_preprocess.py          # unit tests
+├── requirements.txt            # dependencies
+└── Fraud_Detection_FinTech.ipynb  # original notebook
+```
 
-<p align="center">
-  <img src="plots/class_distribution.png" alt="Class Distribution" width="45%">
-  <img src="plots/time_distribution.png" alt="Time Distribution" width="45%">
-</p>
+## Running the Code
 
-<p align="center">
-  <img src="plots/amount_distribution.png" alt="Amount Distribution" width="45%">
-  <img src="plots/correlation_heatmap.png" alt="Correlation Heatmap" width="45%">
-</p>
-## 🚀 How to Run
-
-1. **Clone the repository:**
+Install dependencies:
 ```bash
-   git clone https://github.com/Reethika2024/Fraud-Detection-FinTech.git
-   cd Fraud-Detection-FinTech
+pip install -r requirements.txt
 ```
 
-2. **Install dependencies:**
+Download the dataset and place `creditcard.csv` in the project folder.
+
+Train the model:
 ```bash
-   pip install -r requirements.txt
+python main.py --mode train
 ```
 
-3. **Download the dataset:**
-   - Download from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-   - Place `creditcard.csv` in the project root directory
+Or just run the notebook if you prefer.
 
-4. **Run the notebook:**
+## Visualizations
+
+Check out the `plots/` folder for:
+- Class distribution showing the imbalance
+- Transaction amount patterns
+- Time-based patterns
+- Correlation heatmap
+
+## Results
+
+See [RESULTS.md](RESULTS.md) for detailed analysis and findings.
+
+Main takeaway: The model catches most fraud (89.7% recall) while keeping false positives very low (95.8% precision). In production, you'd probably tune the threshold based on the cost of missed fraud vs annoying legitimate customers.
+
+## Docker
+
+If you want to run this in a container:
 ```bash
-   jupyter notebook Fraud_Detection_FinTech.ipynb
-```
-
-## 📁 Project Structure
-```
-Fraud-Detection-FinTech/
-├── Fraud_Detection_FinTech.ipynb    # Main notebook
-├── creditcard.csv                   # Dataset (download separately)
-├── requirements.txt                 # Python dependencies
-├── README.md                        # Project documentation
-└── LICENSE                          # MIT License
-```
-
-## 🔍 Key Features
-
-- **Feature Engineering:** Created `LogAmount` and `Hour` features
-- **Data Preprocessing:** Handled missing values and scaling
-- **Class Imbalance:** Applied SMOTE to balance the dataset
-- **Model Training:** XGBoost with optimized hyperparameters
-- **Comprehensive Evaluation:** Confusion matrix, ROC curve, classification report
-
-## 🐳 Docker Deployment
-
-### Build and run with Docker:
-```bash
-# Build the Docker image
 docker build -t fraud-detection .
-
-# Run the container
-docker run -v $(pwd)/models:/app/models -v $(pwd)/plots:/app/plots fraud-detection
+docker run -v $(pwd)/models:/app/models fraud-detection
 ```
 
-### Or use Docker Compose:
+Or use docker-compose:
 ```bash
-# Build and run
 docker-compose up
-
-# Run in detached mode
-docker-compose up -d
-
-# Stop the container
-docker-compose down
 ```
 
-## 📝 License
+## Testing
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Run the tests:
+```bash
+pytest test_preprocess.py -v
+```
 
-## 👤 Author
+## What I Learned
 
-**Reethika**
+- Handling imbalanced datasets is tricky
+- SMOTE helps but isn't perfect
+- XGBoost is really solid for tabular data
+- Feature engineering matters a lot
+- Always look at confusion matrix, not just accuracy
+
+## Future Ideas
+
+- Try ensemble methods (combine multiple models)
+- Experiment with neural networks
+- Add more time-based features
+- Test with online learning for real-time updates
+
+## License
+
+MIT License
+
+## Author
+
+Reethika
 - GitHub: [@Reethika2024](https://github.com/Reethika2024)
-
-## 🙏 Acknowledgments
-
-- Dataset provided by [Machine Learning Group - ULB](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-- Inspired by real-world FinTech fraud detection systems
