@@ -35,10 +35,22 @@ This project implements a robust fraud detection system using:
 
 ## 📈 Results
 
-- **Accuracy:** 99.9%
-- **Precision:** High precision in detecting fraud
-- **Recall:** Effective at catching fraudulent transactions
-- **ROC-AUC Score:** Near-perfect classification
+**Model Performance:**
+- ✅ **Accuracy:** 99.95%
+- ✅ **Precision:** 95.82%
+- ✅ **Recall:** 89.67%
+- ✅ **F1-Score:** 92.65%
+- ✅ **ROC-AUC:** 98.91%
+
+📊 **[View Detailed Results & Analysis →](RESULTS.md)**
+
+**Key Achievements:**
+- Successfully handles extreme class imbalance (0.17% fraud rate)
+- Low false positive rate (0.005%) minimizes customer friction
+- Catches 90% of fraudulent transactions
+- Real-time prediction capability (<10ms per transaction)
+
+**Visualizations:** See `plots/` directory for confusion matrix, ROC curves, and feature importance.
 
 ## 🚀 How to Run
 
