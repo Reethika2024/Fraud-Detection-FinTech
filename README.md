@@ -52,6 +52,17 @@ This project implements a robust fraud detection system using:
 
 **Visualizations:** See `plots/` directory for confusion matrix, ROC curves, and feature importance.
 
+### 📊 Model Visualizations
+
+<p align="center">
+  <img src="plots/class_distribution.png" alt="Class Distribution" width="45%">
+  <img src="plots/time_distribution.png" alt="Time Distribution" width="45%">
+</p>
+
+<p align="center">
+  <img src="plots/amount_distribution.png" alt="Amount Distribution" width="45%">
+  <img src="plots/correlation_heatmap.png" alt="Correlation Heatmap" width="45%">
+</p>
 ## 🚀 How to Run
 
 1. **Clone the repository:**

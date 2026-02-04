@@ -173,12 +173,23 @@ Actual  Legit     56,860    3
 
 ## 📸 Visualizations
 
-See `plots/` directory for:
-- Confusion matrix
-- ROC curve
-- Precision-Recall curve
-- Class distribution
-- Feature importance plot
+### Class Distribution
+![Class Distribution](plots/class_distribution.png)
+*Shows the extreme imbalance: 99.83% legitimate vs 0.17% fraud*
+
+### Transaction Amount Patterns
+![Amount Distribution](plots/amount_distribution.png)
+*Comparison of transaction amounts between legitimate and fraudulent transactions*
+
+### Transaction Time Patterns
+![Time Distribution](plots/time_distribution.png)
+*Hourly distribution showing fraud patterns throughout the day*
+
+### Feature Correlations
+![Correlation Heatmap](plots/correlation_heatmap.png)
+*Correlation between top features and fraud detection*
+
+All high-resolution visualizations available in the `plots/` directory.
 
 ---
 

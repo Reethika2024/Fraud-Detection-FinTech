@@ -5,6 +5,8 @@ Generates exploratory data analysis (EDA) plots
 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
@@ -31,11 +33,10 @@ def plot_class_distribution(df, save=True):
     
     if save:
         os.makedirs(PLOTS_PATH, exist_ok=True)
-        plt.savefig(os.path.join(PLOTS_PATH, 'class_distribution.png'))
+        plt.savefig(os.path.join(PLOTS_PATH, 'class_distribution.png'), dpi=300, bbox_inches='tight')
         print(f"Class distribution plot saved to {PLOTS_PATH}")
     
-    plt.tight_layout()
-    plt.show()
+    plt.close()
 
 def plot_amount_distribution(df, save=True):
     """Plot distribution of transaction amounts"""
@@ -59,11 +60,10 @@ def plot_amount_distribution(df, save=True):
     
     if save:
         os.makedirs(PLOTS_PATH, exist_ok=True)
-        plt.savefig(os.path.join(PLOTS_PATH, 'amount_distribution.png'))
+        plt.savefig(os.path.join(PLOTS_PATH, 'amount_distribution.png'), dpi=300, bbox_inches='tight')
         print(f"Amount distribution plot saved to {PLOTS_PATH}")
     
-    plt.tight_layout()
-    plt.show()
+    plt.close()
 
 def plot_time_distribution(df, save=True):
     """Plot transaction patterns over time"""
@@ -86,11 +86,10 @@ def plot_time_distribution(df, save=True):
     
     if save:
         os.makedirs(PLOTS_PATH, exist_ok=True)
-        plt.savefig(os.path.join(PLOTS_PATH, 'time_distribution.png'))
+        plt.savefig(os.path.join(PLOTS_PATH, 'time_distribution.png'), dpi=300, bbox_inches='tight')
         print(f"Time distribution plot saved to {PLOTS_PATH}")
     
-    plt.tight_layout()
-    plt.show()
+    plt.close()
 
 def plot_correlation_heatmap(df, save=True):
     """Plot correlation heatmap of features"""
@@ -107,11 +106,10 @@ def plot_correlation_heatmap(df, save=True):
     
     if save:
         os.makedirs(PLOTS_PATH, exist_ok=True)
-        plt.savefig(os.path.join(PLOTS_PATH, 'correlation_heatmap.png'))
+        plt.savefig(os.path.join(PLOTS_PATH, 'correlation_heatmap.png'), dpi=300, bbox_inches='tight')
         print(f"Correlation heatmap saved to {PLOTS_PATH}")
     
-    plt.tight_layout()
-    plt.show()
+    plt.close()
 
 def generate_all_plots(filepath=DATA_PATH):
     """Generate all EDA visualizations"""

@@ -20,7 +20,7 @@
 # Output files
 outputs/
 results/
-plots/
+
 
 # Environment variables
 .env
