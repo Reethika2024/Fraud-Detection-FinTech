@@ -1,11 +1,10 @@
 """
 Unit tests for preprocessing module
 """
-
 import pytest
 import pandas as pd
 import numpy as np
-from preprocess import create_features, split_data
+from preprocess import feature_engineering, split_data
 
 def create_mock_data():
     """Create mock credit card data for testing"""
@@ -25,10 +24,10 @@ def create_mock_data():
     
     return data
 
-def test_create_features():
+def test_feature_engineering():
     """Test feature engineering"""
     df = create_mock_data()
-    df_features = create_features(df)
+    df_features = feature_engineering(df)
     
     # Check that new features were created
     assert 'LogAmount' in df_features.columns
@@ -37,14 +36,14 @@ def test_create_features():
     # Check that LogAmount is calculated correctly
     assert df_features['LogAmount'].min() >= 0
     
-    # Check Hour is in valid range
+    # Check Hour is in valid range (0-48 hours since Time can be up to 172800 seconds)
     assert df_features['Hour'].min() >= 0
-    assert df_features['Hour'].max() <= 23
+    assert df_features['Hour'].max() < 48  # 172800 seconds / 3600 = 48 hours
 
 def test_split_data():
     """Test train/test split"""
     df = create_mock_data()
-    df = create_features(df)
+    df = feature_engineering(df)
     
     X_train, X_test, y_train, y_test = split_data(df)
     
@@ -66,7 +65,7 @@ def test_split_data():
 def test_data_types():
     """Test that data types are correct"""
     df = create_mock_data()
-    df = create_features(df)
+    df = feature_engineering(df)
     
     # All features should be numeric
     assert df.select_dtypes(include=[np.number]).shape[1] == len(df.columns)
