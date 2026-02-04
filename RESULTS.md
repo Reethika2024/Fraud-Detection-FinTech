@@ -195,3 +195,16 @@ Main learnings:
 ---
 
 *Last updated: Feb 2026*
+
+## Feature Importance Analysis
+
+![Feature Importance](plots/feature_importance.png)
+*Top 20 features ranked by their contribution to fraud detection*
+
+The model relies most heavily on:
+- **V14** (44.5%) - Dominant feature, likely captures key fraud patterns
+- **V10** (21.1%) - Second most important
+- **V4, V12, V8** - Other significant PCA components
+- **LogAmount** (1.4%) - Our engineered feature still contributes
+
+Interesting finding: The anonymized PCA features carry most of the predictive power, but our LogAmount feature engineering still helps the model.
