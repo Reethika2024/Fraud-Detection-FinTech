@@ -24,6 +24,23 @@ Using the Kaggle Credit Card Fraud Detection dataset:
 
 Download from: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
+## Visualizations
+
+### Class Distribution
+![Class Distribution](plots/class_distribution.png)
+
+### Transaction Patterns
+<p float="left">
+  <img src="plots/amount_distribution.png" width="49%" />
+  <img src="plots/time_distribution.png" width="49%" />
+</p>
+
+### Feature Analysis
+<p float="left">
+  <img src="plots/correlation_heatmap.png" width="49%" />
+  <img src="plots/feature_importance.png" width="49%" />
+</p>
+
 ## Approach
 
 ### Data Processing
@@ -50,6 +67,7 @@ Chose XGBoost because it handles imbalanced data well and is fast to train.
 ├── train_model.py              # model training
 ├── evaluate.py                 # metrics and evaluation
 ├── visualize.py                # data visualizations
+├── feature_importance.py       # feature analysis
 ├── main.py                     # run everything
 ├── test_preprocess.py          # unit tests
 ├── requirements.txt            # dependencies
@@ -71,14 +89,6 @@ python main.py --mode train
 ```
 
 Or just run the notebook if you prefer.
-
-## Visualizations
-
-Check out the `plots/` folder for:
-- Class distribution showing the imbalance
-- Transaction amount patterns
-- Time-based patterns
-- Correlation heatmap
 
 ## Results
 
